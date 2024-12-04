@@ -28,8 +28,8 @@ body {
 .container {
     display: flex;
     border: 1px solid black;
-    height: 350px;
-    width: 500px;
+    height: 600px;
+    width: 900px;
     flex-wrap: wrap;
     background-color: white;
 }
