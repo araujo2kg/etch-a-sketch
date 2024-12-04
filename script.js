@@ -12,7 +12,19 @@ function createSketchGrid(size) {
 }
 
 function applyColor(event) {
-    event.target.style.backgroundColor = "black";
+    event.target.style.backgroundColor = generateRandomColor();
+    if (event.target.style.opacity < 1) {
+        event.target.style.opacity = +event.target.style.opacity + 0.1;
+    }
+}
+
+function generateRandomColor() {
+    let hex = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+        color += hex[Math.floor(Math.random() * hex.length)];
+    }
+    return color;
 }
 
 function setGridSize() {

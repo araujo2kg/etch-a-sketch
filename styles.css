@@ -31,6 +31,7 @@ body {
     height: 350px;
     width: 500px;
     flex-wrap: wrap;
+    background-color: white;
 }
 
 .squares {
