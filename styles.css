@@ -17,17 +17,33 @@ body {
 }
 
 body {
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+        "Helvetica Neue", sans-serif;
     display: flex;
     flex-direction: column;
+    background-color: #353535;
     justify-content: center;
     align-items: center;
-    background-color: #353535;
+    gap: 50px;
+}
+
+h1 {
+    color: #ffffff;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.struct {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
 }
 
 .container {
     display: flex;
     border: 1px solid black;
+    border-radius: 5px;
     height: 600px;
     width: 900px;
     flex-wrap: wrap;
@@ -42,5 +58,30 @@ body {
 }
 
 .menu {
+    padding: 50px 20px;
+    background-color: #353535;
     border: 1px solid white;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    gap: 20px;
+    text-align: center;
+}
+
+.menu button {
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100px;
+    padding: 5px 0px;
+    font-weight: bold;
+}
+
+#displaySize {
+    font-size: 28px;
+    font-weight: bold;
 }

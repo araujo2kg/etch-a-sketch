@@ -9,10 +9,28 @@ function createSketchGrid(size) {
         square.addEventListener("mouseenter", applyColor);
         container.appendChild(square);
     }
+
+    // Display grid size
+    const displaySize = document.querySelector("#displaySize");
+    displaySize.textContent = `${size}x${size}`;
 }
 
 function applyColor(event) {
-    event.target.style.backgroundColor = generateRandomColor();
+    // Check which mode is selected
+    const mode = document.querySelector("input[name='options']:checked");
+    if (mode.id === "default") {
+        // Get selected color
+        const selColor = document.querySelector("input[id='color']").value;
+        event.target.style.backgroundColor = selColor;
+        applyOpacityEffect(event);
+    } else {
+        event.target.style.backgroundColor = generateRandomColor();
+        applyOpacityEffect(event);
+    }
+}
+
+// Receives the target event as parameter
+function applyOpacityEffect(event) {
     if (event.target.style.opacity < 1) {
         event.target.style.opacity = +event.target.style.opacity + 0.1;
     }
@@ -42,11 +60,20 @@ function deleteSketchGrid() {
     }
 }
 
+function resetSketch() {
+    deleteSketchGrid();
+    createSketchGrid(size);
+}
+
+// Change grid size
 const setSizeButton = document.querySelector("#setSize");
 setSizeButton.addEventListener("click", () => {
     setGridSize();
-    deleteSketchGrid();
-    createSketchGrid(size);
+    resetSketch();
 });
+
+// Clear current sketch
+const clearSketchButton = document.querySelector("#clearSketch");
+clearSketchButton.addEventListener("click", resetSketch);
 
 createSketchGrid(size);
