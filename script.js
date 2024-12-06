@@ -1,12 +1,19 @@
 let size = 30;
+let drawingControl = false;
 
 function createSketchGrid(size) {
     const container = document.querySelector(".container");
     for (let i = 0; i < size * size; i++) {
         let square = document.createElement("div");
         square.classList.add("squares");
+        // Calculate squares size based on container and grid size
         square.style.width = `calc(100% / ${size})`;
-        square.addEventListener("mouseenter", applyColor);
+        // Apply drawing event listener
+        square.addEventListener("mouseenter", (event) => {
+            if (drawingControl) {
+                applyColor(event);
+            }
+        });
         container.appendChild(square);
     }
 
@@ -75,5 +82,14 @@ setSizeButton.addEventListener("click", () => {
 // Clear current sketch
 const clearSketchButton = document.querySelector("#clearSketch");
 clearSketchButton.addEventListener("click", resetSketch);
+
+// Draw by clicking and hovering
+const container = document.querySelector(".container");
+container.addEventListener("mousedown", (event) => {
+    drawingControl = true;
+});
+document.addEventListener("mouseup", () => {
+    drawingControl = false;
+});
 
 createSketchGrid(size);
